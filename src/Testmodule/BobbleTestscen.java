@@ -11,13 +11,10 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.sun.tools.javac.util.Context;
-
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
-import sun.awt.im.InputMethodManager;
 
 public class BobbleTestscen extends BobbleTestCap {
 	@Test
@@ -57,11 +54,10 @@ public class BobbleTestscen extends BobbleTestCap {
 		driver.pressKey(new KeyEvent(AndroidKey.CAMERA));
 		driver.findElement(By.xpath(prop.getProperty("click"))).click();
 		driver.navigate().back();
-		((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-
+		
 		boolean isKeyboardVisible= driver.isKeyboardShown();
 		System.out.println(isKeyboardVisible);
-		driver.findElement(By.id("//*[@id='camera_key']")).click();
+		driver.pressKey(new KeyEvent(AndroidKey.VOICE_ASSIST));
 		
 
 	}
